@@ -20,19 +20,21 @@ export interface HeaderData {
   customer: Customer;
 }
 
-export interface SubheaderData {
-  link?: string
-}
-
 export interface InvoiceDetails {
+  items?: Item[];
+  payment?: Payment;
   note?: string;
 }
 
+export interface Payment {
+  qrCode?: string;
+  accountBank?: string;
+  accountName?: string;
+}
+
 export interface Invoice {
-  header: HeaderData
-  subheader: SubheaderData;
+  header: HeaderData;
   details: InvoiceDetails;
-  items: Item[];
 }
 
 export interface Item {
@@ -43,20 +45,29 @@ export interface Item {
   unit: UniteType;
 }
 
+export const TableColumns: Record<string, string> = {
+  code: '#',
+  name: 'Nome',
+  type: 'Tipo',
+  quantity: 'Qtd.',
+  value: 'Valor',
+  unit: 'Unidade',
+  subtotal: 'Subtotal',
+  total: 'Total',
+};
+
+export const ContentTitles: Record<string, string> = {
+  date: 'Data',
+  observations: 'Observações',
+  payment: 'Dados de pagamento',
+};
+
 export enum ItemType {
-  SERVICE,
-  PRODUCT,
+  SERVICE = 'SERVIÇO',
+  PRODUCT = 'PRODUTO',
 }
 
 export enum UniteType {
   UN,
   METER,
 }
-
-export enum PaymentType {
-  PIX = 'PIX',
-  CASH = 'CASH',
-  CREDIT = 'CREDIT',
-  DEBIT = 'DEBIT',
-}
-
