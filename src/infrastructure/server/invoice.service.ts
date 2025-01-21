@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrinterService } from '../printer/printer.service';
-import { getInvoice } from '../../templates/invoice.template';
+import { getInvoice } from '../../templates/invoice/invoice.template';
 import { InvoiceBodyDto } from '../../dtos/invoice';
 
 @Injectable()

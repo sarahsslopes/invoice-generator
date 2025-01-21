@@ -1,7 +1,7 @@
 import type { Content } from 'pdfmake/interfaces';
-import { CompanyDto } from '../dtos/invoice';
-import { CustomerDto } from '../dtos/invoice';
-import { HeaderDataDto } from '../dtos/invoice';
+import { CompanyDto } from '../../../dtos/invoice';
+import { CustomerDto } from '../../../dtos/invoice';
+import { HeaderDataDto } from '../../../dtos/invoice';
 
 export const headerSection = ({
   company,

@@ -1,7 +1,7 @@
 import type { StyleDictionary, TDocumentDefinitions } from 'pdfmake/interfaces';
-import { headerSection } from '../sections';
-import { getInvoiceContent } from '../sections';
-import { InvoiceBodyDto } from '../dtos/invoice';
+import { headerSection } from './sections';
+import { getInvoiceContent } from './sections';
+import { InvoiceBodyDto } from '../../dtos/invoice';
 
 const styles: StyleDictionary = {
   header: {

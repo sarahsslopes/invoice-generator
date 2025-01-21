@@ -1,9 +1,9 @@
 import { Content } from 'pdfmake/interfaces';
-import { CurrencyUtils } from '../@shared/utils';
-import { ContentTitles, TableColumns } from '../@shared/model/invoice.model';
-import { ItemDto } from '../dtos/invoice';
-import { InvoiceDetailsDto } from '../dtos/invoice';
-import { PaymentDto } from '../dtos/invoice';
+import { CurrencyUtils } from '../../../@shared/utils';
+import { ContentTitles, TableColumns } from '../../../@shared/model/invoice.model';
+import { ItemDto } from '../../../dtos/invoice';
+import { InvoiceDetailsDto } from '../../../dtos/invoice';
+import { PaymentDto } from '../../../dtos/invoice';
 
 export const getInvoiceContent = (details: InvoiceDetailsDto): Content => {
   const { note, payment, items } = details;
@@ -55,22 +55,18 @@ const getTableWithFooter = (items: ItemDto[]): Content => {
   return {
     style: 'content',
     layout: {
-      hLineWidth: (i, node) => {
-        if (i === 0) return 1; // Linha entre os títulos e o primeiro item
-        if (i === node.table.body.length) return 1; // Linha final da tabela
-        return 0; // Nenhuma linha intermediária
-      },
-      vLineWidth: () => 0, // Removido a linha vertical
-      hLineColor: (i) => (i === 1 ? '#3f51b5' : '#CCCCCC'), // Linha roxa após os títulos
-      vLineColor: () => '#FFFFFF', // Removido a cor das linhas verticais
-      paddingLeft: () => 0, // Removido o padding
-      paddingRight: () => 0, // Removido o padding
-      paddingTop: () => 0, // Removido o padding
-      paddingBottom: () => 0, // Removido o padding
+      hLineWidth: () => 0,
+      vLineWidth: () => 0,
+      hLineColor: (i) => (i === 1 ? '#3f51b5' : '#CCCCCC'),
+      vLineColor: () => '#FFFFFF',
+      paddingLeft: () => 0,
+      paddingRight: () => 0,
+      paddingTop: () => 0,
+      paddingBottom: () => 0,
     },
     table: {
       headerRows: 1,
-      widths: ['*', '*', '*', '*', '*', '*', '*'], // Largura total da tabela
+      widths: ['*', '*', '*', '*', '*', '*', '*'],
       body: [
         [
           {
@@ -116,7 +112,6 @@ const getTableWithFooter = (items: ItemDto[]): Content => {
             color: '#FFFFFF',
           },
         ],
-        // Linha roxa após os títulos
         [
           { text: '', colSpan: 7, border: [true, false, true, false] },
           '',
