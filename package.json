@@ -26,7 +26,8 @@
     "html-to-pdfmake": "^2.5.20",
     "pdfmake": "^0.2.18",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "zod": "^3.25.0-canary.20241210T225910"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

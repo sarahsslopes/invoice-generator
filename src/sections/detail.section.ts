@@ -1,14 +1,11 @@
 import { Content } from 'pdfmake/interfaces';
 import { CurrencyUtils } from '../@shared/utils';
-import {
-  ContentTitles,
-  InvoiceDetails,
-  Item,
-  Payment,
-  TableColumns,
-} from '../models/invoice.model';
+import { ContentTitles, TableColumns } from '../@shared/model/invoice.model';
+import { ItemDto } from "../dtos/invoice";
+import { InvoiceDetailsDto } from "../dtos/invoice";
+import { PaymentDto } from '../dtos/invoice';
 
-export const getInvoiceContent = (details: InvoiceDetails): Content => {
+export const getInvoiceContent = (details: InvoiceDetailsDto): Content => {
   const { note, payment, items } = details;
 
   return {
@@ -20,7 +17,11 @@ export const getInvoiceContent = (details: InvoiceDetails): Content => {
   };
 };
 
-const getPaymentDetails = ({ accountBank, accountName, qrCode }: Payment): Content => {
+const getPaymentDetails = ({
+  accountBank,
+  accountName,
+  qrCode,
+}: PaymentDto): Content => {
   return {
     style: 'content',
     alignment: 'left',
@@ -45,11 +46,10 @@ const getPaymentDetails = ({ accountBank, accountName, qrCode }: Payment): Conte
   };
 };
 
-
-const getTableWithFooter = (items: Item[]): Content => {
+const getTableWithFooter = (items: ItemDto[]): Content => {
   const total = items.reduce(
     (sum, item) => sum + item.value * item.quantity,
-    0
+    0,
   );
 
   return {
@@ -73,18 +73,58 @@ const getTableWithFooter = (items: Item[]): Content => {
       widths: ['*', '*', '*', '*', '*', '*', '*'], // Largura total da tabela
       body: [
         [
-          { text: TableColumns.code, style: 'tableHeader', fillColor: '#3f51b5', color: '#FFFFFF' },
-          { text: TableColumns.name, style: 'tableHeader', fillColor: '#3f51b5', color: '#FFFFFF' },
-          { text: TableColumns.type, style: 'tableHeader', fillColor: '#3f51b5', color: '#FFFFFF' },
-          { text: TableColumns.value, style: 'tableHeader', fillColor: '#3f51b5', color: '#FFFFFF' },
-          { text: TableColumns.quantity, style: 'tableHeader', fillColor: '#3f51b5', color: '#FFFFFF' },
-          { text: TableColumns.unit, style: 'tableHeader', fillColor: '#3f51b5', color: '#FFFFFF' },
-          { text: TableColumns.subtotal, style: 'tableHeader', fillColor: '#3f51b5', color: '#FFFFFF' },
+          {
+            text: TableColumns.code,
+            style: 'tableHeader',
+            fillColor: '#3f51b5',
+            color: '#FFFFFF',
+          },
+          {
+            text: TableColumns.name,
+            style: 'tableHeader',
+            fillColor: '#3f51b5',
+            color: '#FFFFFF',
+          },
+          {
+            text: TableColumns.type,
+            style: 'tableHeader',
+            fillColor: '#3f51b5',
+            color: '#FFFFFF',
+          },
+          {
+            text: TableColumns.value,
+            style: 'tableHeader',
+            fillColor: '#3f51b5',
+            color: '#FFFFFF',
+          },
+          {
+            text: TableColumns.quantity,
+            style: 'tableHeader',
+            fillColor: '#3f51b5',
+            color: '#FFFFFF',
+          },
+          {
+            text: TableColumns.unit,
+            style: 'tableHeader',
+            fillColor: '#3f51b5',
+            color: '#FFFFFF',
+          },
+          {
+            text: TableColumns.subtotal,
+            style: 'tableHeader',
+            fillColor: '#3f51b5',
+            color: '#FFFFFF',
+          },
         ],
         // Linha roxa após os títulos
         [
           { text: '', colSpan: 7, border: [true, false, true, false] },
-          '', '', '', '', '', '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
         ],
         ...items.map((item, index) => [
           { text: index + 1, alignment: 'center' },

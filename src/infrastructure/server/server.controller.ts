@@ -1,13 +1,13 @@
 import { Body, Controller, Get, Res } from '@nestjs/common';
 import { InvoiceService } from './invoice.service';
 import { Response } from 'express';
-import { Invoice } from '../../models/invoice.model';
+import { Invoice } from '../../@shared/model/invoice.model';
 
-@Controller('invoice')
-export class InvoiceController {
+@Controller()
+export class ServerController {
   constructor(private readonly invoiceService: InvoiceService) {}
 
-  @Get()
+  @Get('invoice')
   async createInvoice(@Body() data: Invoice, @Res() response: Response) {
     const pdf = this.invoiceService.create(data);
     response.setHeader('Content-Type', 'application/pdf');

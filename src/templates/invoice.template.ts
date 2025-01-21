@@ -4,7 +4,7 @@ import type {
 } from "pdfmake/interfaces";
 import { headerSection } from "../sections";
 import { getInvoiceContent } from "../sections";
-import { Invoice } from "../models/invoice.model";
+import { Invoice } from "../@shared/model/invoice.model";
 
 const styles: StyleDictionary = {
   header: {

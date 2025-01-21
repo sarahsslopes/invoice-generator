@@ -1,11 +1,9 @@
 import type { Content } from 'pdfmake/interfaces';
-import {
-  Company,
-  Customer,
-  HeaderData,
-} from '../models/invoice.model';
+import { CompanyDto } from "../dtos/invoice";
+import { CustomerDto } from "../dtos/invoice";
+import { HeaderDataDto } from "../dtos/invoice";
 
-export const headerSection = ({ company, customer }: HeaderData): Content => {
+export const headerSection = ({ company, customer }: HeaderDataDto): Content => {
   return {
     style: 'header',
     stack: [
@@ -24,7 +22,7 @@ const getLogo: Content = {
   margin: [0, 0, 0, 20],
 };
 
-const getCompanyColumn = (company: Company): Content => {
+const getCompanyColumn = (company: CompanyDto): Content => {
   return {
     alignment: 'left',
     stack: [
@@ -38,7 +36,7 @@ const getCompanyColumn = (company: Company): Content => {
   };
 };
 
-const getCustomerColumn = (customer: Customer): Content => {
+const getCustomerColumn = (customer: CustomerDto): Content => {
   return {
     alignment: 'right',
     stack: [
