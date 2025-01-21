@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const companySchema = z.object({
   name: z.string(),
@@ -7,6 +7,6 @@ export const companySchema = z.object({
   address: z.string(),
   email: z.string().nullish(),
   link: z.string().nullish(),
-})
+});
 
 export type CompanyDto = z.infer<typeof companySchema>;

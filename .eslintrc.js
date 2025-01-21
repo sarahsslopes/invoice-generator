@@ -18,6 +18,5 @@ module.exports = {
   ignorePatterns: ['.eslintrc.js'],
   rules: {
     quotes: ['error', 'single'],
-    "object-curly-spacing": ["error", "never"],
   },
 };

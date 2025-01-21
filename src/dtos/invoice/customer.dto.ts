@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const customerSchema = z.object({
   name: z.string(),
@@ -6,6 +6,6 @@ export const customerSchema = z.object({
   phone: z.string().nullish(),
   email: z.string().nullish(),
   address: z.string().nullish(),
-})
+});
 
 export type CustomerDto = z.infer<typeof customerSchema>;

@@ -1,8 +1,8 @@
 import { Content } from 'pdfmake/interfaces';
 import { CurrencyUtils } from '../@shared/utils';
 import { ContentTitles, TableColumns } from '../@shared/model/invoice.model';
-import { ItemDto } from "../dtos/invoice";
-import { InvoiceDetailsDto } from "../dtos/invoice";
+import { ItemDto } from '../dtos/invoice';
+import { InvoiceDetailsDto } from '../dtos/invoice';
 import { PaymentDto } from '../dtos/invoice';
 
 export const getInvoiceContent = (details: InvoiceDetailsDto): Content => {

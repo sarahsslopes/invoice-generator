@@ -14,4 +14,3 @@ export const ContentTitles: Record<string, string> = {
   observations: 'Observações',
   payment: 'Dados de pagamento',
 };
-

@@ -1,6 +1,6 @@
-import { itemSchema } from "./item.dto";
-import { paymentSchema } from "./payment.dto";
-import { z } from "zod";
+import { itemSchema } from './item.dto';
+import { paymentSchema } from './payment.dto';
+import { z } from 'zod';
 
 export const invoiceDetailsSchema = z.object({
   items: z.array(itemSchema),
@@ -9,4 +9,3 @@ export const invoiceDetailsSchema = z.object({
 });
 
 export type InvoiceDetailsDto = z.infer<typeof invoiceDetailsSchema>;
-
